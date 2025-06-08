@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from cryptography.fernet import Fernet
 import datetime
+import os
 
 app = Flask(__name__)
 
@@ -59,4 +60,5 @@ def verify_code():
     return jsonify({"status": "الكود صالح"}), 200
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
