@@ -14,6 +14,10 @@ codes_db = {
     # مثال: "ENCRYPTED_CODE": {"device_id": None, "start_date": None, "duration_days": 30}
 }
 
+@app.route('/')
+def home():
+    return "Server is running", 200
+
 @app.route('/add_code', methods=['POST'])
 def add_code():
     data = request.json
